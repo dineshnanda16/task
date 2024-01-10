@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.imgcontainer {
+    position: relative;
+}
+
+.imgcontainer .c1 {
+    position: absolute;
+    top: 340px;
+    left: 160px;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
+
+.imgcontainer .c2 {
+    position: absolute;
+    top: 340px;
+    left: 280px;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
+
+.imgcontainer .c3 {
+    position: absolute;
+    top: 340px;
+    left: 400px;
+    padding: 0px 20px;
+    box-sizing: border-box;
+}

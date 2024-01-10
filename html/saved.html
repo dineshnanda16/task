@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Display Result</title>
+    <link rel="stylesheet" href="css\stylesaved.css">
+</head>
+
+<body>
+    <div class="imgcontainer">
+        <img src="jpg\agv1.jpg" alt="Gambar 1">
+    </div>
+    <div class="c1">
+        <p><span id="result1"></span></p>
+    </div>
+    <div class="c2">
+        <p><span id="result2"></span></p>
+    </div>
+    <div class="c3">
+        <p><span id="result3"></span></p>
+    </div>
+
+    <script>
+        document.getElementById("result1").innerHTML = localStorage.getItem("1v");
+        document.getElementById("result2").innerHTML = localStorage.getItem("2v");
+        document.getElementById("result3").innerHTML = localStorage.getItem("3v");
+    </script>
+    <p><a href="dashboard.html">Back to Dashboard</a></p>
+</body>
+
+</html>
