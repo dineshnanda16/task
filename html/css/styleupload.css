@@ -5,48 +5,94 @@
     font-family: 'poppins', sans-serif;
 }
 
+body {
+    margin: 0;
+}
+
+.navbar {
+    background-color: brown;
+    padding: 1%;
+}
+
 .hero {
     width: 100%;
     height: 100vh;
     background: linear-gradient(#e7baff, #b198de);
     display: flex;
-    align-items: flex-start; /* Updated to move content to the top */
-    justify-content: flex-start; /* Updated to move content to the top */
-    padding: 20px; /* Added padding for spacing */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align items at the top */
+    padding: 20px;
 }
 
 #drop-area {
-    width: 300px; /* Adjusted width */
-    height: 200px; /* Adjusted height */
-    padding: 20px;
-    text-align: center;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-#input-file {
-    display: none;
-}
-
-#img-view {
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    box-sizing: border-box;
     position: relative;
+    right: 35%;
+    width: 20%;
+    height: 200px;
+    padding: 0px;
+    text-align: left;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-left: 0px;
 }
 
 .logo {
+    align-items: center;
     max-width: 100%;
     max-height: 100%;
     border-radius: 20px;
 }
+#img-view {
+    width: 30%; /* Take full width */
+    height: 100%;
+    align-content: center;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
+    border-color: blue;
+}
+
+.image {
+    width: 800px; /* Set your desired width */
+    height: 500px; /* Set your desired height */
+    margin: auto; /* Center the container horizontally */
+    position: relative; /* Required for absolute positioning of child elements */
+}
+
+.image img {
+    width: 100%; /* Make sure the image takes the full width of the container */
+    height: 100%; /* Make sure the image takes the full height of the container */
+    object-fit: cover; /* Optional: Maintain aspect ratio and cover the container */
+}
 
 #img-view p {
     position: absolute;
-    bottom: 1px;
-    left: 50%;
+    top: 70px;
+    left: 45%;
     transform: translateX(-50%);
     font-size: 16px;
     color: #333;
+}
+
+
+.draw {
+    position: relative;
+    right: 25%;
+    bottom: 19%;;
+    width: 15%; /* Adjusted width */
+    margin-top: 20px; /* Adjusted margin for spacing */
+    margin-left: 20px; /* Adjusted margin for spacing */
+}
+
+.draw button {
+    background-color: black;
+    width: 100%;
+    height: 100px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
+    color: white;
+    z-index: 1;
 }

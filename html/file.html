@@ -1,19 +1,34 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>File Upload</title>
-    <link rel="stylesheet" href="css\styleupload.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styleupload.css">
+    <title>Image Annotation</title>
 </head>
 <body>
-    <div class="hero" >
-        <label for="input-file"id="drop-area" >
-            <input type="file" accept="image/*"id="input-file">
-            <div id="img-view">
-                <img src="jpg\dlogo.jpg" alt="logo" class="logo">
-                <p><br> Upload your picture here</br?</p>
-            </div>
-        </label>
+<div class="navbar">
+    <h1>Update Page</h1>
+</div>
+<div class="hero" id="hero">
+    <label for="input-file" id="drop-area">
+        <input type="file" accept="image/*" id="input-file">
+        <div id="img-view">
+            <img src="jpg/dlogo.jpg" alt="logo" class="logo">
+            <p>click</p>
+        </div>
+    </label>
+    <div class="draw">
+        <button id="draw-box" onclick="draw()">click here to draw text box</button>
     </div>
-<script src="js\script1.js"></script>
+    <div class="image">
+        <img src="jpg\agv1.jpg" alt="img">
+    </div>
+</div>
+
+
+<script src="js/script1.js"></script>
 </body>
 </html>
