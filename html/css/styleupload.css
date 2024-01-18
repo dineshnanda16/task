@@ -54,6 +54,20 @@ body {
     border-color: blue;
 }
 
+
+
+#clear-boxes {
+    position: relative;
+    bottom: 50%;
+    margin-left: 240px;
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
 .image {
     width: 800px; /* Set your desired width */
     height: 500px; /* Set your desired height */
@@ -65,6 +79,7 @@ body {
     width: 100%; /* Make sure the image takes the full width of the container */
     height: 100%; /* Make sure the image takes the full height of the container */
     object-fit: cover; /* Optional: Maintain aspect ratio and cover the container */
+    z-index: 0;
 }
 
 #img-view p {
