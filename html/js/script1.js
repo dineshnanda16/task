@@ -59,8 +59,12 @@ input.addEventListener("change", function (event) {
 });
 
 // Function to handle drawing
+// ...
+
+// Function to handle drawing
 function draw() {
     var textboxes = loadTextBoxes();
+    var isTextBoxCreated = false; // Flag to check if a text box has been created
 
     // Add an event listener to the image container to capture clicks
     imageContainer.addEventListener("click", function (event) {
@@ -69,32 +73,38 @@ function draw() {
             return;
         }
 
-        // Create a text box at the clicked position on the image
-        var textBox = document.createElement("input");
-        textBox.type = "text";
-        textBox.placeholder = "Enter value";
-        textBox.style.position = "absolute";
-        textBox.style.left = (event.offsetX / imageContainer.clientWidth) * 100 + "%";
-        textBox.style.top = (event.offsetY / imageContainer.clientHeight) * 100 + "%";
+        // Check if a text box has already been created
+        if (!isTextBoxCreated) {
+            // Create a text box at the clicked position on the image
+            var textBox = document.createElement("input");
+            textBox.type = "text";
+            textBox.placeholder = "Enter value";
+            textBox.style.position = "absolute";
+            textBox.style.left = (event.offsetX / imageContainer.clientWidth) * 100 + "%";
+            textBox.style.top = (event.offsetY / imageContainer.clientHeight) * 100 + "%";
 
-        // Generate and set a random 3-digit number
-        textBox.value = generateRandomNumber();
+            // Generate and set a random 3-digit number
+            textBox.value = generateRandomNumber();
 
-        // Append the text box to the image container
-        imageContainer.appendChild(textBox);
+            // Append the text box to the image container
+            imageContainer.appendChild(textBox);
 
-        // Add the new textbox to the array
-        textboxes.push({
-            value: textBox.value,
-            left: textBox.style.left,
-            top: textBox.style.top
-        });
+            // Add the new textbox to the array
+            textboxes.push({
+                value: textBox.value,
+                left: textBox.style.left,
+                top: textBox.style.top
+            });
 
-        // Save the textboxes array in localStorage
-        saveTextBoxes(textboxes);
+            // Save the textboxes array in localStorage
+            saveTextBoxes(textboxes);
 
-        // Attach the "input" event listener to update the stored value when the text box is moved
-        attachInputEventListener(textBox, textboxes);
+            // Attach the "input" event listener to update the stored value when the text box is moved
+            attachInputEventListener(textBox, textboxes);
+
+            // Set the flag to true to indicate that a text box has been created
+            isTextBoxCreated = true;
+        }
     });
 
     // Load stored textboxes and display them
@@ -113,7 +123,7 @@ function draw() {
         attachInputEventListener(textBox, textboxes);
     });
 
-    // Set interval to update the value of each text box every 2 minutes
+    // Set interval to update the value of each text box every 30 seconds
     setInterval(function () {
         textboxes.forEach(function (item) {
             var textBox = document.querySelector(`.image input[value='${item.value}']`);
@@ -123,8 +133,11 @@ function draw() {
                 saveTextBoxes(textboxes);
             }
         });
-    }, 120000); // 2 minutes in milliseconds
+    }, 30000);
 }
+
+// ...
+
 
 // Function to attach the "input" event listener to update the stored value when the text box is moved
 function attachInputEventListener(textBox, textboxes) {
