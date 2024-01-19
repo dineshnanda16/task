@@ -1,32 +1,25 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    position: relative;
 }
 
-
+.c1, .c2, .c3 {
+    padding: 0px 20px;
+    box-sizing: border-box;
+}
 
 .c1 {
-    position: absolute;
-    top: 340px;
-    left: 160px;
-    padding: 0px 20px;
-    box-sizing: border-box;
+    margin-top: 340px;
+    margin-left: 160px;
 }
 
-.c2{
-    position: absolute;
-    top: 340px;
-    left: 280px;
-    padding: 0px 20px;
-    box-sizing: border-box;
+.c2 {
+    margin-top: 340px;
+    margin-left: 280px;
 }
 
-.c3{
-    position: absolute;
-    top: 340px;
-    left: 400px;
-    padding: 0px 20px;
-    box-sizing: border-box;
+.c3 {
+    margin-top: 340px;
+    margin-left: 400px;
 }
