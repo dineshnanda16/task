@@ -1,0 +1,7 @@
+.image img{
+        left: 0px;;
+        width: 100%; /* Set your desired width */
+        height:100%; /* Set your desired height */
+        margin: auto; /* Center the container horizontally */
+        position: relative; /* Required for absolute positioning of child elements */
+    }
