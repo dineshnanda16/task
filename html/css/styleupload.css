@@ -77,7 +77,16 @@ body {
     border: none;
     cursor: pointer;
 }
-
+#save{
+    position: absolute;
+    margin-right:100%;
+    left:300%;
+    padding: 5px 10px;
+    background-color:red;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
 
 .image {
     left: 0px;;

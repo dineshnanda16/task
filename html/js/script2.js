@@ -22,46 +22,86 @@ function generateRandomNumber() {
 
 // Adding event listener to input-file
 input.addEventListener("change", function (event) {
-    // Get the selected file
     var file = event.target.files[0];
 
-    // Check if a file was selected
     if (file) {
-        // Find the existing image element
-        var existingImage = document.querySelector(".image img");
+        var reader = new FileReader();
 
-        // If an existing image is found, replace its source
-        if (existingImage) {
-            existingImage.src = URL.createObjectURL(file);
-        } else {
-            // If no existing image, create a new div and image element
-            var div = document.createElement("div");
-            div.setAttribute("class", "image");
+        reader.onload = function (e) {
+            var imageDataUrl = e.target.result;
 
+            // Set the image source directly
             var img = document.createElement("img");
-            img.src = URL.createObjectURL(file);
+            img.src = imageDataUrl;
             img.alt = "img";
             img.style.width = "100%";
             img.style.height = "100%";
 
-            div.appendChild(img);
+            // Clear existing content in the image container
+            imageContainer.innerHTML = "";
+            // Append the new image to the image container
+            imageContainer.appendChild(img);
 
-            // Append the new div to the drawButton's parent element
-            drawButton.parentNode.insertBefore(div, drawButton.nextSibling);
-        }
+            // Save the image data URL in localStorage
+            localStorage.setItem("imageDataURL", imageDataUrl);
 
-        // Save the image URL in localStorage
-        localStorage.setItem("imageURL", URL.createObjectURL(file));
+            // Draw text boxes
+            draw();
+        };
 
-        // Draw text boxes
-        draw();
+        // Read the file as a data URL
+        reader.readAsDataURL(file);
     }
 });
 
-// Function to handle drawing
-// ...
+// Load stored image on page load
+document.addEventListener("DOMContentLoaded", function () {
+    var storedImageDataURL = localStorage.getItem("imageDataURL");
 
-// Function to handle drawing
+    if (storedImageDataURL) {
+        var img = document.createElement("img");
+        img.src = storedImageDataURL;
+        img.alt = "img";
+        img.style.width = "100%";
+        img.style.height = "100%";
+
+        // Clear existing content in the image container
+        imageContainer.innerHTML = "";
+        // Append the stored image to the image container
+        imageContainer.appendChild(img);
+    }
+
+    // Draw text boxes
+    draw();
+});
+
+
+// Load stored image on page load
+document.addEventListener("DOMContentLoaded", function () {
+    var storedImageURL = localStorage.getItem("imageURL");
+
+    if (storedImageURL) {
+        // Create a new image element with the stored image URL
+        var img = document.createElement("img");
+        img.src = storedImageURL;
+        img.alt = "img";
+        img.style.width = "100%";
+        img.style.height = "100%";
+
+        // Remove any existing images in the container
+        while (imageContainer.firstChild) {
+            imageContainer.removeChild(imageContainer.firstChild);
+        }
+
+        // Append the new image to the image container
+        imageContainer.appendChild(img);
+    }
+
+    // Draw text boxes
+    draw();
+});
+
+// Draw text boxes
 function draw() {
     var textboxes = loadTextBoxes();
     var isTextBoxCreated = false; // Flag to check if a text box has been created
@@ -136,9 +176,6 @@ function draw() {
     }, 30000);
 }
 
-// ...
-
-
 // Function to attach the "input" event listener to update the stored value when the text box is moved
 function attachInputEventListener(textBox, textboxes) {
     textBox.addEventListener("input", function () {
@@ -149,36 +186,6 @@ function attachInputEventListener(textBox, textboxes) {
         }
     });
 }
-
-// Load stored image on page load
-document.addEventListener("DOMContentLoaded", function () {
-    var storedImageURL = localStorage.getItem("imageURL");
-    var imageContainer = document.querySelector(".image");
-
-    if (storedImageURL) {
-        // Create a new div and image element with the stored image URL
-        var div = document.createElement("div");
-        div.setAttribute("class", "image");
-        document.body.appendChild(div); // Append to the body
-
-        var img = document.createElement("img");
-        img.src = storedImageURL;
-        img.alt = "img";
-        img.style.width = "100%";
-        img.style.height = "100%";
-
-        // Remove any existing images in the container
-        while (imageContainer.firstChild) {
-            imageContainer.removeChild(imageContainer.firstChild);
-        }
-
-        // Append the new image to the image container
-        imageContainer.appendChild(img);
-    }
-
-    // Draw text boxes
-    draw();
-});
 
 // Function to clear all textboxes and the stored image
 function clearTextBoxes() {

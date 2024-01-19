@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Updated Image and Text Boxes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .image-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div class="image-container"></div>
+
+<script>
+// Function to load text boxes array and image data from localStorage
+function loadData() {
+    var storedTextBoxes = localStorage.getItem("textboxes");
+    var storedImageDataUrl = localStorage.getItem("imageDataUrl");
+
+    return {
+        textboxes: storedTextBoxes ? JSON.parse(storedTextBoxes) : [],
+        imageDataUrl: storedImageDataUrl || null
+    };
+}
+
+// Function to create and display text boxes on the image
+function displayTextboxes(textboxes) {
+    textboxes.forEach(function (item) {
+        var textBox = document.createElement("input");
+        textBox.type = "text";
+        textBox.value = item.value;
+        textBox.style.position = "absolute";
+        textBox.style.left = item.left;
+        textBox.style.top = item.top;
+
+        // Append the text box to the image container
+        document.querySelector(".image-container").appendChild(textBox);
+    });
+}
+
+// Function to display the updated image
+function displayImage(imageDataUrl) {
+    var img = document.createElement("img");
+    img.src = imageDataUrl;
+    img.alt = "img";
+    img.style.width = "100%";
+    img.style.height = "100%";
+
+    // Clear existing content in the image container
+    document.querySelector(".image-container").innerHTML = "";
+    // Append the new image to the image container
+    document.querySelector(".image-container").appendChild(img);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    var { textboxes, imageDataUrl } = loadData();
+
+    if (imageDataUrl) {
+        // Display the updated image
+        displayImage(imageDataUrl);
+
+        // Display text boxes with the same position
+        displayTextboxes(textboxes);
+    }
+});
+</script>
+
+</body>
+</html>
