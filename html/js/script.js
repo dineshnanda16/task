@@ -20,9 +20,26 @@ function loadData() {
 }
 
 // Function to generate a random 3-digit number
+// Function to generate a random 3-digit number
 function generateRandomNumber() {
-    return Math.floor(Math.random() * 900) + 100; // Random number between 100 and 999
+    // Example: Generate a random number between 1 and 100
+    return Math.floor(Math.random() * 1000) + 1;
 }
+
+// Add an event listener to the button
+document.getElementById('randomButton').addEventListener('click', function() {
+    var { textboxes, imageURL } = loadData();
+
+    textboxes.forEach(function (item) {
+        var textBox = document.querySelector(`.image input[value='${item.value}']`);
+        if (textBox) {
+            var randomValue = generateRandomNumber();
+            textBox.value = randomValue;
+            item.value = randomValue;
+            saveData(textboxes, imageURL);
+        }
+    });
+});
 
 // Function to draw text boxes
 function draw() {
@@ -114,8 +131,6 @@ input.addEventListener("change", function (event) {
     }
 });
 
-// Load stored image on page load
 document.addEventListener("DOMContentLoaded", function () {
-    // Draw text boxes
     draw();
 });
