@@ -62,6 +62,15 @@ function displayImage(imageDataUrl) {
     document.querySelector(".image-container").appendChild(img);
 }
 
+// Function to randomly generate numbers for text boxes and store them
+function generateAndStoreRandomNumbers(textboxes) {
+    textboxes.forEach(function (item) {
+        item.value = Math.floor(Math.random() * 1000); // Change this logic as needed
+    });
+
+    localStorage.setItem("textboxes", JSON.stringify(textboxes));
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     var { textboxes, imageDataUrl } = loadData();
 
@@ -71,6 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Display text boxes with the same position
         displayTextboxes(textboxes);
+
+        // Generate random numbers and store them
+        generateAndStoreRandomNumbers(textboxes);
     }
 });
 </script>

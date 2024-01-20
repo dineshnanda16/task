@@ -117,8 +117,7 @@ function draw() {
             textBox.style.left = (event.offsetX / imageContainer.clientWidth) * 100 + "%";
             textBox.style.top = (event.offsetY / imageContainer.clientHeight) * 100 + "%";
 
-            // Generate and set a random 3-digit number
-            textBox.value = generateRandomNumber();
+          
 
             // Append the text box to the image container
             imageContainer.appendChild(textBox);

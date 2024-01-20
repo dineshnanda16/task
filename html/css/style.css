@@ -1,4 +1,13 @@
-/* Bordered form */
+.container{
+  box-sizing: border-box;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: black; /* Add a background color to the container */
+  border-radius: 0px; 
+  padding: 52px;
+  
+}
 
   
   /* Full-width inputs */
@@ -10,6 +19,18 @@
     border: 1px solid #ccc;
     box-sizing: border-box;
     border-radius: 8px;
+  }
+
+  .checkbox{
+    color: white;
+    text-align: center;
+  }
+  .inputcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 25%;
   }
   
   /* Set a style for all buttons */
@@ -37,17 +58,11 @@
     background-color: #f44336;
   }
   
-  /* Center the avatar image inside this container */
   .imgcontainer {
     text-align: center;
     margin: 24px 0 12px 0;
   }
-  
-  /* Add padding to containers */
-  .container {
-    padding: 52px;
-  }
-  
+ 
   label{
     font-size: 15px;
     font-weight: bold;

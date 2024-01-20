@@ -7,28 +7,51 @@
 </head>
 
 <body>
-        <div class="imgcontainer">
-            <img src="jpg\logo.jpeg" alt="logo" class="logo">
-        </div>
+<div class="container">
+    <div class="imgcontainer">
+        <img src="jpg\logo.jpeg" alt="logo" class="logo">
+    </div>
 
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+    <div class="inputcontainer">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" id="uname" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="psw" required>
 
-            <button type="submit" onclick = "window.location.href='home.html';">Login</button>
+        <button type="button" onclick="validateLogin()">Login</button>
+        <div class="checkbox">
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
         </div>
+    </div>
 
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-    
+    <div class="container">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+</div>
+
+    <script>
+        function validateLogin() {
+            var enteredUsername = document.getElementById("uname").value;
+            var enteredPassword = document.getElementById("psw").value;
+
+           
+            var validUsername = "dinesh16";
+            var validPassword = "2024";
+
+            if (enteredUsername === validUsername && enteredPassword === validPassword) {
+                // Redirect to the home page if credentials are valid
+                window.location.href = 'home.html';
+            } else {
+                // Display an error message (you can customize this)
+                alert("Invalid username or password. Please try again.");
+            }
+        }
+    </script>
+
 </body>
 
 </html>
